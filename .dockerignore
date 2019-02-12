@@ -1,6 +1,6 @@
 # Docker
-## Compose
-docker-compose-yml
+docker*
+Docker*
 
 # Node
 ## Logs
@@ -12,3 +12,6 @@ yarn-error.log*
 
 ## Dependency directories
 node_modules/
+
+## Git
+.git*
