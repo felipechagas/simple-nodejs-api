@@ -5,7 +5,7 @@ services:
     build: .
     volumes:
       - ./:/usr/src/app
-    command: bash -c 'npm i && npm run compile dev && npm start'
+    command: sh -c 'npm i && npm run compile && npm start'
     ports:
       - "3050:3050"
     links:
