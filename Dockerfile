@@ -3,6 +3,6 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install --prod
-COPY ./dist .
+COPY . .
 EXPOSE 3050
 CMD ["npm", "start"]

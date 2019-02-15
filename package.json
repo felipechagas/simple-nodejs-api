@@ -6,8 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "tsc -w",
-    "start": "node program.js"
+    "compile": "tsc",
+    "start": "node dist/program.js"
   },
   "author": "",
   "license": "ISC",
