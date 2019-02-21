@@ -1,20 +1,22 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
-import * as cors from 'cors';
+import * as cors from "cors";
 
 import Database from "./infra/db";
 import NewsController from "./controller/newsController";
+import Auth from "./infra/auth";
 
 class StartUp {
-  
   public app: express.Application;
   private _db: Database;
   private bodyParser;
 
   constructor() {
     this.app = express();
+
     this._db = new Database();
     this._db.createConnection();
+
     this.middler();
     this.routes();
   }
@@ -23,7 +25,7 @@ class StartUp {
     const options: cors.CorsOptions = {
       methods: "GET,OPTIONS,PUT,POST,DELETE",
       origin: "*"
-    }
+    };
 
     this.app.use(cors(options));
   }
@@ -35,9 +37,13 @@ class StartUp {
   }
 
   routes() {
+
+
     this.app.route("/").get((req, res) => {
       res.send({ versao: "0.0.1" });
     });
+
+    this.app.use(Auth.validate);
 
     //new
     this.app.route("/api/v1/news").get(NewsController.get);
@@ -45,7 +51,6 @@ class StartUp {
     this.app.route("/api/v1/news").post(NewsController.create);
     this.app.route("/api/v1/news/:id").put(NewsController.update);
     this.app.route("/api/v1/news/:id").delete(NewsController.delete);
-
   }
 }
 
