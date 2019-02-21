@@ -1,5 +1,5 @@
 import * as jwt from "jsonwebtoken";
-import * Configs from './configs'
+import Configs from './configs'
 
 class Auth {
     validate(req,res,next){
